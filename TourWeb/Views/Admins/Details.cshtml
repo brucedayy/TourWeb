@@ -1,0 +1,27 @@
+﻿@model TourWeb.Admin
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>管理员详情</h4>
+        <hr />
+        <label>用户名:@Html.DisplayFor(model => model.UserName)</label><br />
+        <label>密码:@Html.DisplayFor(model => model.Password)</label><br />
+        <label>注册时间:@Html.DisplayFor(model => model.PubTime)</label><br />
+    </div>
+    <p>
+        @Html.ActionLink("编辑", "Edit", new { id = Model.UserName }) |
+        @Html.ActionLink("返回列表", "Index")
+    </p>
+</body>
+</html>

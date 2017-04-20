@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>注册</title>
+    <style type="text/css">
+        .registerDiv {
+            width: 800px;
+            height: 600px;
+            /*border:2px solid #808080;*/
+            margin: auto;
+        }
+
+        .divIcon {
+            margin: auto;
+            width: 100px;
+            height: 100px;
+            /*background-color: #ff0000;*/
+            /*background-image: url('images/hnist_main_icon_100_100.jpg');*/
+            background-image: url('../../images/hnist_main_icon_100_100.jpg');
+        }
+
+        .divUserName {
+            margin: auto;
+            width: 300px;
+            height: 50px;
+            /*background-color:#ffd800;*/
+            margin-top: 30px;
+        }
+
+        .divPassword {
+            margin: auto;
+            width: 300px;
+            height: 50px;
+            /*background-color: #ffd800;*/
+            margin-top: 30px;
+        }
+
+        .divRePassword {
+            margin: auto;
+            width: 300px;
+            height: 50px;
+            /*background-color: #ffd800;*/
+            margin-top: 30px;
+        }
+
+        .divbtnRegister {
+            margin: auto;
+            line-height: 50px;
+            margin-top: 30px;
+        }
+
+        .btnRegister {
+            width: 300px;
+            height: 50px;
+            /*background-color: #ffd800;*/
+            background-color: #0094ff;
+            color: white;
+            margin-left: 250px;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .divLinkLogin {
+            margin: auto;
+            width: 300px;
+            height: 50px;
+            /*background-color: #ffd800;*/
+            margin-top: 30px;
+        }
+
+        input {
+            width: 300px;
+            height: 35px;
+        }
+    </style>
+</head>
+<body>
+    <div class="registerDiv">
+        <div class="divIcon"></div>
+        @*<form method="post" action="/Home/Register">*@
+        <div class="divUserName">
+            <input name="username" placeholder="请输入用户名" />
+        </div>
+        <div class="divPassword">
+            <input id="pwd" name="password" type="password" placeholder="请输入密码" />
+        </div>
+        <div class="divRePassword">
+            <input type="password" placeholder="确认密码" />
+        </div>
+        <div class="divbtnRegister">
+            <button class="btnRegister" onclick="funcRegister()">确认注册</button>
+        </div>
+        @*</form>*@
+        <div class="divLinkLogin">
+            已有账号|<a href="/Home/Login">登录</a>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        function funcRegister() {
+            $.post("/Home/Register", { "username": $("input[name='username']").val(), "password": $("input[name='password']").val() },
+                function (data) {
+                    if (data == "success") {
+                        document.write('注册成功！正在跳转至登陆页面...');
+                        setInterval('window.location.href = "/Home/Login"', 3000);
+                        
+                    } else {
+                        document.write('注册失败！正在跳转至注册页面...');
+                        setInterval('window.location.href = "/Home/Register"', 3000);
+                    }
+                });
+        }
+    </script>
+</body>
+</html>

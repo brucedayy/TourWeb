@@ -1,0 +1,32 @@
+﻿@model TourWeb.Admin
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>确定删除管理员?</h3>
+    <div>   
+        <hr />
+        <label>用户名:@Html.DisplayFor(model => model.UserName)</label><br />
+        <label>密码:@Html.DisplayFor(model => model.Password)</label><br />
+        <label>注册时间:@Html.DisplayFor(model => model.PubTime)</label><br />
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="删除" class="btn btn-default" /> |
+                @Html.ActionLink("返回列表", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

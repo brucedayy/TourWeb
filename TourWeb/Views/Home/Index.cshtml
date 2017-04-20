@@ -1,0 +1,208 @@
+﻿@model IEnumerable<TourWeb.Scene>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>旅游信息管理系统</title>
+    <style type="text/css">
+        .divSecneShowTop {
+            margin: auto;
+            height: 115px;
+            width: 1200px;
+            background-image: url('../../images/scene_show_top.png');
+        }
+
+            .divSecneShowTop span {
+                line-height: 70px;
+                font-size: 40px;
+                color: white;
+                display: block;
+                margin-left: 40px;
+                float: left;
+            }
+
+        .divSecneShowContent {
+            margin: auto;
+            width: 1200px;
+            height: 440px;
+            background-color: rgb(215,238,252);
+        }
+
+        .divSecneShowBottom {
+            margin: auto;
+            width: 1200px;
+            height: 70px;
+            background-image: url('../../images/scene_show_bottom.png');
+        }
+
+        .showItem {
+            /*position:absolute;*/
+            /*margin-top:10px;*/
+            width: 350px;
+            height: 400px;
+            /*background-color:#ffd800;*/
+            float: left;
+        }
+
+        .btnNext {
+            width: 100px;
+            height: 50px;
+            background-color: #808080;
+        }
+
+        .btnSearchRoad {
+            width: 100px;
+            height: 30px;
+            /*background-color:#b6ff00;*/
+            float: right;
+            margin-top: 20px;
+            margin-right: 150px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btnGiveUsNote {
+            width: 100px;
+            height: 30px;
+            /*background-color: #b6ff00;*/
+            float: right;
+            margin-top: 20px;
+            margin-right: 20px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .showItemImg div {
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="divSecneShowTop">
+        <span>旅游信息管理系统</span>
+        <span style="width:60px;height:30px;margin-top:60px;margin-left:700px;font-size:20px;cursor:pointer;line-height:30px;" id="btnNextPage">下一页</span>
+    </div>
+    <div class="divSecneShowContent" id="divSC">
+         @foreach (var item in Model)
+         {
+            <div class="showItem" style="margin-left:20px;">
+                <div class="showItemImg" onclick="funcOrder(event)">
+                    <img src=@item.Img width="350" height="250" style="cursor:pointer" alt="图片消失了" title="点击去下订单"/>
+                    <div>@item.Name</div>
+                    <div>地点:@item.Position</div>
+                    <div>优势:@item.Priority</div>
+                    <div>信誉:@item.Credit</div>
+                    <div>价格:@item.Price 元/人</div>
+                    @*<div id="divSid" style="visibility:hidden;">@item.Sid</div>*@
+                    <input type="hidden" value=@item.Sid />
+                </div>
+            </div>
+         }       @*<div class="showItem" style="margin-left:20px;">
+            <div class="showItemImg">
+                <img src="~/sceneimages/凤凰古城.jpg"  width="350" height="250"/>
+                <div>地点:湖南省凤凰县</div>
+                <div>优势:历史文化古城</div>
+                <div>信誉:AAAAA</div>
+                <div>价格:148元/人</div>
+            </div>
+        </div>
+        <div class="showItem" style="margin-left:30px;">
+            <div class="showItem" style="margin-left:20px;">
+                <div class="showItemImg">
+                    <img src="~/sceneimages/凤凰古城.jpg" width="350" height="250" />
+                    <div>地点:湖南省凤凰县</div>
+                    <div>优势:历史文化古城</div>
+                    <div>信誉:AAAAA</div>
+                    <div>价格:148元/人</div>
+                </div>
+            </div>
+        </div>
+        <div class="showItem" style="margin-left:40px;">
+            <div class="showItem" style="margin-left:20px;">
+                <div class="showItemImg">
+                    <img src="~/sceneimages/凤凰古城.jpg" width="350" height="250" />
+                    <div>地点:湖南省凤凰县</div>
+                    <div>优势:历史文化古城</div>
+                    <div>信誉:AAAAA</div>
+                    <div>价格:148元/人</div>
+                </div>
+            </div>
+        </div>*@
+    </div>
+    <div class="divSecneShowBottom">
+        <div class="btnSearchRoad"><a href="http://map.baidu.com/">线路查询</a></div>
+        <div class="btnGiveUsNote" onclick="window.location.href='/Home/Note'">给我留言</div>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>  
+    <script>
+        var mainTotal = 1;
+        $('#btnNextPage').bind("click", function () {
+            $.post("/Home/Index", { "pg": ++mainTotal, "ct": 3 }, function (data) {
+                var jsonScene = $.parseJSON(data);
+                if (jsonScene["total"] == 0) {
+                    window.location.reload();
+                }
+                $('#divSC').empty();
+                $.each(jsonScene, function (i, item) {
+                    $.each(item, function (index, sce) {
+                        $('#divSC').append(
+                            '<div class="showItem" style="margin-left:20px;" onclick="funcOrder(event)">' +
+                            '<div class="showItemImg" style="cursor:pointer" alt="图片消失了" title="点击去下订单">' +
+                            '<img src="' + sce.Img + '" width="350" height="250" />' +
+                            '<div>' + sce.Name + '</div>' +
+                            '<div>地点:' + sce.Position + '</div>' +
+                            '<div>优势:' + sce.Priority + '</div>' +
+                            '<div>信誉:'+sce.Credit+'</div>' +
+                            '<div>价格:' + sce.Price + '元/人</div>' +
+                            '<input type="hidden" value="'+sce.Sid+'" /></div></div>'
+                        );
+                    });
+                });
+            });
+        });
+
+
+
+        function funcOrder(e)
+        {
+            var e = e || window.event;
+            var target = e.target || e.srcElement;
+            var obj = target.parentElement;
+            var Img = obj.children[0].src;
+            var Name = obj.children[1].innerText;
+            var Position = obj.children[2].innerText.split(":")[1];
+            var Priority = obj.children[3].innerText.split(":")[1];
+            var Credit = obj.children[4].innerText.split(":")[1];
+            var Price = obj.children[5].innerText.split(":")[1].split("元")[0];
+            var Sid = obj.children[6].value;
+
+            //$.get("/Home/Order", {
+            //    "Img": Img, "Name": Name, "Position": Position,
+            //    "Priority": Priority, "Credit": Credit,
+            //    "Price": Price
+            //}, function (data) {
+            //});
+            var url = '/Home/Order?Img=' + Img + '&Name=' + Name + '&Position=' + Position +
+                '&Priority=' + Priority + "&Credit=" + Credit + "&Price=" + Price + "&Sid=" + Sid;
+            //var url = 'Home/Order';
+            //addURLParam(url, "Img", Img);
+            //addURLParam(url, "Name", Name);
+            //addURLParam(url, "Position", Position);
+            //addURLParam(url, "Priority", Priority);
+            //addURLParam(url, "Credit", Credit);
+            //addURLParam(url, "Price", Price);
+            //addURLParam(url, "Sid", Sid);
+            window.location.href = url;
+        }
+
+        function addURLParam(url, name, value) {
+            url += (url.indexOf("?") == -1 ? "?" : "&");
+            url += encodeURIComponent(name) + "=" + encodeURIComponent(value);
+            return url;
+        }
+
+    </script>
+</body>
+</html>

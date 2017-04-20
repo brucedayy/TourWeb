@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>确认订单</title>
+    <style type="text/css">
+        .orderDiv {
+            width: 350px;
+            height: 620px;
+            margin: auto;
+            border: 2px #808080 solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="orderDiv">
+        <h1>确认订单</h1>
+        <hr />
+        <div class="showItemImg">
+            <img src=@ViewBag.Img width="350" height="250" />
+            <div>用户:@Session["username"]</div>
+            <div>名称:@ViewBag.Name</div>
+            <div>地点:@ViewBag.Position</div>
+            <div>优势:@ViewBag.Priority</div>
+            <div>信誉:@ViewBag.Credit</div>
+            <div id="divPrice">价格:@ViewBag.Price 元/人</div>
+            <input type="hidden" id="inputSid" value=@ViewBag.Sid />
+        </div>
+        <div>
+            数量:
+            <input size="4" disabled="disabled" value="0" id="inputCount" />
+            <button onclick="funcAdd(event)">+</button>
+            <button onclick="funcSub(event)" id="btnSub">-</button>
+        </div>
+        <hr />
+        <h3>
+            订单总计：&#65509
+            <span id="spanTotalPrice">0</span>
+        </h3>
+        <div style="height:40px;width:250px;background-color:#0094ff;line-height:40px;text-align:center;color:white;cursor:pointer;" onclick="funSubmitOrder()">提交订单</div>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        var globalCount = 0;
+        function funSubmitOrder() {
+            $.post("/Home/SubmitOrder", {
+                "sid": document.getElementById('inputSid').value, "total": document.getElementById('spanTotalPrice').innerText
+            }, function (data) {
+                alert(data);
+            });
+        }
+        function funcAdd(e) {
+            $('#inputCount').val(++globalCount);
+            var price = document.getElementById('divPrice').innerText.split(":")[1].split("元")[0];
+            var count = document.getElementById('inputCount').value;
+            $("#spanTotalPrice").text(price * count);
+            document.getElementById("btnSub").disabled = false;
+        }
+        function funcSub(e) {           
+            $('#inputCount').val(--globalCount);
+            var price = document.getElementById('divPrice').innerText.split(":")[1].split("元")[0];
+            var count = document.getElementById('inputCount').value;
+            $("#spanTotalPrice").text(price * count);
+            if (document.getElementById("inputCount").value == 0) e.target.disabled = true;
+        }        
+    </script>
+
+</body>
+</html>

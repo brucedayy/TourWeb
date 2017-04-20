@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>旅游信息管理系统</title>
+    <style type="text/css">
+        .loginMainDiv {
+            width: 941px;
+            height: 400px;
+            /*background-color:#b6ff00;*/
+            margin: auto;
+        }
+
+        .loginTop {
+            width: 900px;
+            height: 100px;
+            /*background-color:#ffd800;*/
+        }
+
+            .loginTop span {
+                width: 600px;
+                line-height: 100px;
+                font-size: 40px;
+                float: left;
+                color: #4fb0db;
+            }
+
+            .loginTop img {
+                float: left;
+            }
+
+        .loginLeft {
+            margin-top: 10px;
+            height: 280px;
+            width: 500px;
+            background-image: url("images/login_bg2.jpg");
+            float: left;
+        }
+
+        .loginRight {
+            width: 441px;
+            height: 300px;
+            /*background-color:#4fb0db;*/
+            float: left;
+            background-image: url("images/login_win.png");
+        }
+
+        .login_icon {
+            width: 300px;
+            height: 100px;
+            background-image: url('images/hnist_icon.png');
+            float: left;
+        }
+
+        .inputUserName {
+            margin-top: 100px;
+            margin-left: 170px;
+        }
+
+        .inputPassword {
+            margin-top: 15px;
+            margin-left: 170px;
+        }
+
+        .spCheckCode {
+            position: absolute;
+            margin-top: 10px;
+            margin-left: 170px;
+        }
+        button{
+            /*background-color:#0094ff;*/
+            cursor:pointer;
+        }
+        #btnLogin{
+            margin-top:60px;
+            margin-left:160px;
+        }
+        #btnRegister{
+            margin-left:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loginMainDiv">
+        <div class="loginTop">
+            <div class="login_icon"></div>
+            <span>旅游信息管理系统</span>
+        </div>
+        <div class="loginLeft">
+        </div>
+        <div class="loginRight">
+            <form>
+                <input name="username" class="inputUserName" type="text" />
+                <input name="password" class="inputPassword" type="text" />                      
+            </form>
+            <span class="spCheckCode">1234</span>         
+            <button id="btnLogin">登陆</button>
+            <button id="btnRegister" onclick='window.location.href = "/Home/Register";'>注册</button>
+        </div>
+    </div>
+    <script>
+        
+    </script>
+</body>
+</html>

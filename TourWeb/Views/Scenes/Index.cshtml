@@ -1,0 +1,103 @@
+﻿@model IEnumerable<TourWeb.Scene>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style type="text/css">
+        table {
+            font-family: verdana,arial,sans-serif;
+            font-size: 11px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #666666;
+            border-collapse: collapse;
+        }
+
+            table th {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #666666;
+                background-color: #dedede;
+            }
+
+            table td {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #666666;
+                background-color: #ffffff;
+            }
+    </style>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("新增", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+               图片
+            </th>
+            <th>
+               名称
+            </th>
+            <th>
+                位置
+            </th>
+            <th>
+                优势
+            </th>
+            <th>
+               信誉
+            </th>
+            <th>
+               价格
+            </th>
+            <th>
+                发布时间
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Img)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Priority)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Credit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PubTime)
+            </td>
+            <td>
+                @Html.ActionLink("编辑", "Edit", new { id=item.Sid }) |
+                @Html.ActionLink("详情", "Details", new { id=item.Sid }) |
+                @Html.ActionLink("删除", "Delete", new { id=item.Sid })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

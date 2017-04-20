@@ -1,0 +1,32 @@
+﻿@model TourWeb.Note
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>确定删除留言?</h3>
+    <div>       
+        <hr />
+        <label>用户名:@Html.DisplayFor(item => item.UserName)</label><br />
+        <label>留言:@Html.DisplayFor(item => item.Details)</label><br />
+        <label>发布时间:@Html.DisplayFor(item => item.PubTime)</label><br />
+     
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="删除" class="btn btn-default" /> |
+                @Html.ActionLink("返回列表", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

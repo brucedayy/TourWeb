@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>旅游管理系统后台</title>
+    <style type="text/css">
+        body{
+            margin:0;
+        }
+        .adminHeader{
+            margin:auto;
+            width:1200px;
+            height:100px;
+            /*background-color:#0094ff;*/            
+        }
+        .adminContent{
+            width:1200px;
+            height:500px;
+            margin:auto;
+            /*background-color:#ffd800;*/
+            
+        }
+        .adminLeft {
+            width: 200px;
+            height: 450px;
+            background-color: #0094ff;
+            float: left;
+        }
+        .adminLeft div{
+            width:200px;
+            height:40px;
+            line-height:40px;
+            text-align:center;
+            background-color:#0094ff;
+            color:white;
+            cursor:pointer;
+        }
+            .adminLeft div:hover{
+                background-color:#0026ff;
+            }
+            .adminRight{
+                width:900px;
+                height:450px;
+                /*background-color:#808080;*/
+                border:#808080 solid 1px;
+                float:left;
+            }
+    </style>
+</head>
+<body>
+    <div class="adminHeader">
+        <img src="images/hnist_main_icon_100_100.jpg" style="float:left;" />
+        <span style="line-height:100px;float:left;font-size:40px;">旅游信息管理系统后台</span>
+    </div>
+    <div class="adminContent">
+        <div class="adminLeft">
+            <div>用户管理</div>
+            <div>景点管理</div>
+            <div>订单管理</div>
+            <div>留言管理</div>
+            <div>系统设置</div>
+        </div>
+        <div class="adminRight">
+            <iframe width="900" height="450" src="useradmin.html" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true"></iframe>
+        </div>
+    </div>    
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿@model TourWeb.Scene
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>确定删除景点?</h3>
+    <div>       
+        <hr />
+        <label>图片:@Html.DisplayNameFor(model => model.Img)</label><br/>
+        <label>名称:@Html.DisplayNameFor(model => model.Name)</label><br />
+        <label>位置:@Html.DisplayNameFor(model => model.Position)</label><br />
+        <label>优势:@Html.DisplayNameFor(model => model.Priority)</label><br />
+        <label>信誉:@Html.DisplayNameFor(model => model.Credit)</label><br />
+        <label>价格:@Html.DisplayNameFor(model => model.Price)</label><br />
+        <label>发布时间:@Html.DisplayNameFor(model => model.PubTime)</label><br />
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="删除" class="btn btn-default" /> |
+                @Html.ActionLink("返回列表", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

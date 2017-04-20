@@ -1,0 +1,26 @@
+﻿@model TourWeb.Note
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>留言详情</h4>
+        <hr />
+        <label>用户名:@Html.DisplayFor(item => item.UserName)</label><br />
+        <label>留言:@Html.DisplayFor(item => item.Details)</label><br />
+        <label>发布时间:@Html.DisplayFor(item => item.PubTime)</label><br />
+    </div>
+    <p>       
+        @Html.ActionLink("返回列表", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿@model TourWeb.Scene
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>景点详情</h4>
+        <hr />
+        <label>图片:@Html.DisplayNameFor(model => model.Img)</label><br />
+        <label>名称:@Html.DisplayNameFor(model => model.Name)</label><br />
+        <label>位置:@Html.DisplayNameFor(model => model.Position)</label><br />
+        <label>优势:@Html.DisplayNameFor(model => model.Priority)</label><br />
+        <label>信誉:@Html.DisplayNameFor(model => model.Credit)</label><br />
+        <label>价格:@Html.DisplayNameFor(model => model.Price)</label><br />
+        <label>发布时间:@Html.DisplayNameFor(model => model.PubTime)</label><br />
+    </div>
+    <p>
+        @Html.ActionLink("编辑", "Edit", new { id = Model.Sid }) |
+        @Html.ActionLink("返回列表", "Index")
+    </p>
+</body>
+</html>

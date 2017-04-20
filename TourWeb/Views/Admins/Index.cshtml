@@ -1,0 +1,80 @@
+﻿@model IEnumerable<TourWeb.Admin>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style type="text/css">
+        table {
+            font-family: verdana,arial,sans-serif;
+            font-size: 11px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #666666;
+            border-collapse: collapse;
+        }
+
+            table th {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #666666;
+                background-color: #dedede;
+            }
+
+            table td {
+                border-width: 1px;
+                padding: 8px;
+                border-style: solid;
+                border-color: #666666;
+                background-color: #ffffff;
+            }
+    </style>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("新增管理员账户", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+               用户名
+            </th>
+            <th>
+               密码
+            </th>
+            <th>
+                注册时间
+            </th>
+            <th>
+                操作
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PubTime)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new { id=item.UserName }) |               
+                @Html.ActionLink("删除", "Delete", new { id=item.UserName })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

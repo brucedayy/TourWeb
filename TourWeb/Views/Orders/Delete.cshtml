@@ -1,0 +1,34 @@
+﻿@model TourWeb.Order
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>确定删除订单?</h3>
+    <div>  
+        <label>订单编号：@Html.DisplayFor(item => item.Oid)</label><br />
+        <label>景点名称：@Html.DisplayFor(item => item.Scene.Name)</label><br />
+        <label>用户名：@Html.DisplayFor(item => item.UserName)</label><br />
+        <label>下单时间：@Html.DisplayFor(item => item.PubTime)</label><br />
+        <label>总价格：@Html.DisplayFor(item => item.Total)</label><br />      
+        
+ 
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="删除" class="btn btn-default" /> |
+                @Html.ActionLink("返回列表", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>
