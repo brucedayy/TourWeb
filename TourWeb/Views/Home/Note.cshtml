@@ -32,8 +32,23 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script>
         function funSubmit() {
+            if ($('#txA').val().length == 0) {
+                alert("留言不能为空！");
+                return;
+            }
+            if ($('#txA').val().length > 100) {
+                alert("留言不能超过100字！");
+                return;
+            }
             $.post("/Home/SubmitNote", { "details": $('#txA').val() }, function (data) {
-                alert(data);
+                if (data == "success") {
+                    document.write('留言成功！正在跳转至首页...');
+                    setInterval('window.location.href = "/Home/Index"', 3000);
+
+                } else {
+                    document.write('留言失败！正在跳转至首页...');
+                    setInterval('window.location.href = "/Home/Index"', 3000);
+                }
             });
         }
     </script>

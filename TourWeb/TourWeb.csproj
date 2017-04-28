@@ -171,9 +171,6 @@
     <Compile Include="Scene.cs">
       <DependentUpon>TourWebDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>TourWebDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="TourWebDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -201,18 +198,12 @@
     <Content Include="images\hnist_icon.png" />
     <Content Include="images\hnist_main_icon_100_100.jpg" />
     <Content Include="images\login_bg.jpg" />
+    <Content Include="images\login_bg2.jpg" />
     <Content Include="images\login_win.png" />
     <Content Include="images\note_icon.png" />
     <Content Include="images\register_bg.jpg" />
     <Content Include="images\scene_show_bottom.png" />
     <Content Include="images\scene_show_top.png" />
-    <Content Include="login.html" />
-    <Content Include="note.html" />
-    <Content Include="noteadmin.html" />
-    <Content Include="order.html" />
-    <Content Include="orderadmin.html" />
-    <Content Include="register.html" />
-    <Content Include="sceneadmin.html" />
     <Content Include="sceneimages\凤凰古城.jpg" />
     <Content Include="sceneimages\天门山.jpg" />
     <Content Include="sceneimages\岳阳楼.jpg" />
@@ -224,6 +215,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\lvyouxinxi - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -235,7 +227,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="settings.html" />
     <Content Include="TourWebDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TourWebDB.edmx</DependentUpon>
@@ -258,13 +249,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <EntityDeploy Include="TourWebDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TourWebDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="TourWebDB.edmx.diagram">
-      <DependentUpon>TourWebDB.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
@@ -296,6 +280,13 @@
     <Content Include="Views\Admins\Edit.cshtml" />
     <Content Include="Views\Admins\Index.cshtml" />
     <Content Include="Views\Home\AdminLogin.cshtml" />
+    <EntityDeploy Include="TourWebDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TourWebDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="TourWebDB.edmx.diagram">
+      <DependentUpon>TourWebDB.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

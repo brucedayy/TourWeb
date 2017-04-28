@@ -56,6 +56,10 @@
     <div class="adminHeader">
         <img src="~/images/hnist_main_icon_100_100.jpg" style="float:left;" />
         <span style="line-height:100px;float:left;font-size:40px;">旅游信息管理系统后台</span>
+        <span style="height:30px;width:300px;text-align:right;display:block;line-height:30px;;margin-left:800px;margin-top:40px;position:absolute;">
+            管理员:@Session["adminuser"]
+            <a href="/Home/LogoutAdminUser">退出</a>
+        </span>
     </div>
     <div class="adminContent">
         <div class="adminLeft">

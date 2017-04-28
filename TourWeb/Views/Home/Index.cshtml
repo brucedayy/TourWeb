@@ -82,14 +82,18 @@
 <body>
     <div class="divSecneShowTop">
         <span>旅游信息管理系统</span>
-        <span style="width:60px;height:30px;margin-top:60px;margin-left:700px;font-size:20px;cursor:pointer;line-height:30px;" id="btnNextPage">下一页</span>
+        <span style="width:260px;height:30px;margin-top:60px;margin-left:400px;font-size:16px;cursor:pointer;line-height:30px;text-align:right;color:red;">
+            当前账户:@Session["username"]
+            <a href="/Home/LogoutUser">退出</a>
+        </span>
+        <span style="width:60px;height:30px;margin-top:60px;margin-left:30px;font-size:20px;cursor:pointer;line-height:30px;" id="btnNextPage">下一页</span>
     </div>
     <div class="divSecneShowContent" id="divSC">
          @foreach (var item in Model)
          {
             <div class="showItem" style="margin-left:20px;">
-                <div class="showItemImg" onclick="funcOrder(event)">
-                    <img src=@item.Img width="350" height="250" style="cursor:pointer" alt="图片消失了" title="点击去下订单"/>
+                <div class="showItemImg">
+                    <img src=@item.Img width="350" height="250" style="cursor:pointer" alt="图片消失了" title="点击去下订单"  onclick="funcOrder(event)"/>
                     <div>@item.Name</div>
                     <div>地点:@item.Position</div>
                     <div>优势:@item.Priority</div>
@@ -148,15 +152,15 @@
                 $.each(jsonScene, function (i, item) {
                     $.each(item, function (index, sce) {
                         $('#divSC').append(
-                            '<div class="showItem" style="margin-left:20px;" onclick="funcOrder(event)">' +
-                            '<div class="showItemImg" style="cursor:pointer" alt="图片消失了" title="点击去下订单">' +
-                            '<img src="' + sce.Img + '" width="350" height="250" />' +
+                            '<div class="showItem" style="margin-left:20px;">' +
+                            '<div class="showItemImg" alt="图片消失了" title="点击去下订单">' +
+                            '<img src="' + sce.Img + '" width="350" height="250"  onclick="funcOrder(event)" style="cursor:pointer;"/>' +
                             '<div>' + sce.Name + '</div>' +
                             '<div>地点:' + sce.Position + '</div>' +
                             '<div>优势:' + sce.Priority + '</div>' +
                             '<div>信誉:'+sce.Credit+'</div>' +
                             '<div>价格:' + sce.Price + '元/人</div>' +
-                            '<input type="hidden" value="'+sce.Sid+'" /></div></div>'
+                            '<input type="hidden" value="' + sce.Sid +'" /></div></div></div>'
                         );
                     });
                 });

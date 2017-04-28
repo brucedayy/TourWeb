@@ -240,5 +240,19 @@ namespace TourWeb.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult LogoutUser()
+        {
+            Session["username"] = null;
+            return RedirectToAction("Login");
+        }
+
+        [HttpGet]
+        public ActionResult LogoutAdminUser()
+        {
+            Session["adminuser"] = null;
+            return RedirectToAction("AdminLogin");
+        }
+
     }
 }

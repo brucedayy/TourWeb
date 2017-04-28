@@ -29,7 +29,6 @@ namespace TourWeb
         public virtual DbSet<Note> Note { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Scene> Scene { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

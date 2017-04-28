@@ -15,13 +15,13 @@
     <div>
         <h4>景点详情</h4>
         <hr />
-        <label>图片:@Html.DisplayNameFor(model => model.Img)</label><br />
-        <label>名称:@Html.DisplayNameFor(model => model.Name)</label><br />
-        <label>位置:@Html.DisplayNameFor(model => model.Position)</label><br />
-        <label>优势:@Html.DisplayNameFor(model => model.Priority)</label><br />
-        <label>信誉:@Html.DisplayNameFor(model => model.Credit)</label><br />
-        <label>价格:@Html.DisplayNameFor(model => model.Price)</label><br />
-        <label>发布时间:@Html.DisplayNameFor(model => model.PubTime)</label><br />
+        <label>图片:@Html.DisplayFor(model => model.Img)</label><br />
+        <label>名称:@Html.DisplayFor(model => model.Name)</label><br />
+        <label>位置:@Html.DisplayFor(model => model.Position)</label><br />
+        <label>优势:@Html.DisplayFor(model => model.Priority)</label><br />
+        <label>信誉:@Html.DisplayFor(model => model.Credit)</label><br />
+        <label>价格:@Html.DisplayFor(model => model.Price)</label><br />
+        <label>发布时间:@Html.DisplayFor(model => model.PubTime)</label><br />
     </div>
     <p>
         @Html.ActionLink("编辑", "Edit", new { id = Model.Sid }) |

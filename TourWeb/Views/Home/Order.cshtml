@@ -46,7 +46,14 @@
             $.post("/Home/SubmitOrder", {
                 "sid": document.getElementById('inputSid').value, "total": document.getElementById('spanTotalPrice').innerText
             }, function (data) {
-                alert(data);
+                if (data == "success") {
+                    document.write('下单成功！正在跳转至首页...');
+                    setInterval('window.location.href = "/Home/Index"', 3000);
+
+                } else {
+                    document.write('注册失败！正在跳转至首页...');
+                    setInterval('window.location.href = "/Home/Index"', 3000);
+                }
             });
         }
         function funcAdd(e) {
@@ -56,12 +63,15 @@
             $("#spanTotalPrice").text(price * count);
             document.getElementById("btnSub").disabled = false;
         }
-        function funcSub(e) {           
+        function funcSub(e) {         
+            if (document.getElementById("inputCount").value == 0) {
+                e.target.disabled = true;
+                return;
+            }
             $('#inputCount').val(--globalCount);
             var price = document.getElementById('divPrice').innerText.split(":")[1].split("元")[0];
             var count = document.getElementById('inputCount').value;
-            $("#spanTotalPrice").text(price * count);
-            if (document.getElementById("inputCount").value == 0) e.target.disabled = true;
+            $("#spanTotalPrice").text(price * count);           
         }        
     </script>
 
